@@ -1,0 +1,7 @@
+<form [formGroup]="yesNoForm">
+  <mat-radio-group aria-label="Select an option" formControlName="value">
+    <mat-radio-button [value]="false" >No</mat-radio-button>
+    <mat-radio-button [value]="true">Yes</mat-radio-button>
+  </mat-radio-group>
+  <mat-icon (click)="setValue(isDisable)">{{valueLock ?'lock_open': "lock"}}</mat-icon>
+</form>

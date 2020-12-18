@@ -1,0 +1,40 @@
+<form [formGroup]="mainForm" class="form"   (ngSubmit)="next(mainForm)">
+  <div class="wrapper">
+    <h1>{{title}}</h1>
+    <div class="top-block">
+      <div class="top-block__left">
+        <div>
+          <app-input formControlName="firstInput"></app-input>
+        </div>
+        <div>
+          <p class="subtitle">Experience with Angular 10-11</p>
+          <app-radio-button formControlName="firstRadioButton"></app-radio-button>
+        </div>
+      </div>
+      <div class="top-block__right">
+        <div>
+          <app-input formControlName="secondInput"></app-input>
+        </div>
+        <div>
+          <p class="subtitle">Estimate for the task - 4h</p>
+          <app-radio-button formControlName="secondRadioButton"></app-radio-button>
+        </div>
+      </div>
+    </div>
+    <div class="main-block">
+      <div>
+        <app-input formControlName="thirdInput"></app-input>
+      </div>
+      <div>
+        <app-input formControlName="fourthInput"></app-input>
+      </div>
+      <div>
+        <app-input formControlName="fifthInput"></app-input>
+      </div>
+    </div>
+    <div class="footer-block">
+      <button type="submit" mat-flat-button color="primary" class="btn" ><span class="btn__text">Next</span></button>
+    </div>
+  </div>
+</form>
+
