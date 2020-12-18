@@ -33,6 +33,13 @@ export class InputComponent implements OnInit, ControlValueAccessor  {
       inputValue:[{value:"",disabled:this.isDisable},Validators.required]
     })
   }
+  validate() {
+    if(this.inputForm.invalid) {
+      return  {
+        invalid: true
+      }
+    }
+  }
   writeValue(value:any) {
     if(value) {
       this.inputForm.setValue(value);

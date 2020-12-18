@@ -29,7 +29,7 @@
             ],
             "styles": [
               "src/styles.scss",
-               "node_modules/material-design-icons/iconfont/material-icons.css"
+              "node_modules/material-design-icons/iconfont/material-icons.css"
             ],
             "scripts": []
           },
@@ -121,8 +121,13 @@
               "devServerTarget": "test-form:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {}
         }
       }
-    }},
+    }
+  },
   "defaultProject": "test-form"
 }
