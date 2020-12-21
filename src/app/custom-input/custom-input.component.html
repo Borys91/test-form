@@ -2,7 +2,9 @@
     <mat-label>Input label</mat-label>
     <input matInput name="myInput"
     [(ngModel)]="myInput" autocomplete="off"
-    required [disabled]="disabled" [value]= "val"/>
+    required [disabled]="disabled" [value]= "val"
+    (change)="changeValue($event)"
+    />
     <button mat-button *ngIf="myInput" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue()">
       <mat-icon>close</mat-icon>
     </button>
