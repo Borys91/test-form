@@ -19,8 +19,8 @@ export class FormComponent implements OnInit {
       thirdInput : new FormControl("",Validators.required),
       fourthInput : new FormControl("",Validators.required),
       fifthInput : new FormControl("",Validators.required),
-      firstRadioButton: new FormControl({value:true}),
-      secondRadioButton: new FormControl({value:true}),
+      firstRadioButton: new FormControl({value:"Yes"}),
+      secondRadioButton: new FormControl({value:"Yes"}),
     })
   }
   onSubmit(form) {

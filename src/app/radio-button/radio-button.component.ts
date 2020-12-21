@@ -1,5 +1,5 @@
 import { FormBuilder ,FormGroup , ControlValueAccessor ,NG_VALUE_ACCESSOR}  from '@angular/forms';
-import { Component, OnInit ,forwardRef ,Input} from '@angular/core';
+import { Component ,forwardRef ,Input} from '@angular/core';
 import { MAT_RADIO_DEFAULT_OPTIONS } from '@angular/material/radio';
 
 
@@ -19,45 +19,50 @@ import { MAT_RADIO_DEFAULT_OPTIONS } from '@angular/material/radio';
   }
   ]
 })
-export class RadioButtonComponent implements OnInit, ControlValueAccessor{
-  yesNoForm:FormGroup;
-  valueLock = true;
-  isDisable = false;
-  val = true;
+export class RadioButtonComponent implements  ControlValueAccessor{
+  myRadioButton;
+  answers:string[] = ["No","Yes"]
+  // yesNoForm:FormGroup;
+  // valueLock = true;
+  // isDisable = false;
+  val = '';
   onChange: any = () => {}
   onTouch: any = () => {}
-  constructor(private fb:FormBuilder) { }
-
-  ngOnInit(): void {
-    this.yesNoForm = this.fb.group({
-      value: this.val
-    });
-
-  }
-  set value(value) {
-
-    if(!!value){
-      this.val = value;
-      this.onChange(value);
-      this.onTouch();
+  constructor() { }
+  // ngOnInit(): void {
+  //   this.yesNoForm = this.fb.group({
+  //     value: this.val
+  //   });
+  // }
+  set value(val) {
+    if(val !== undefined && this.val !== val){
+      this.val = val;
+      this.onChange(this.val);
+      this.onTouch(this.val);
     }
   }
   writeValue(value:any) {
+    console.log(value.value)
     if(value) {
-      this.yesNoForm.setValue(value);
+      this.myRadioButton = value.value
     }
   }
   registerOnChange(fn: any) {
-    this.yesNoForm.valueChanges.subscribe(fn);
+    this.onChange = fn;
+
   }
   registerOnTouched(fn: any) {
-    this.yesNoForm.valueChanges.subscribe(fn);
+    this.onTouch = fn;
   }
-  setValue(isDisable) {
-    this.valueLock = !this.valueLock;
-    this.isDisable = !this.isDisable;
-    isDisable ? this.yesNoForm.enable():this.yesNoForm.disable()
+  // setValue(isDisable) {
+  //   this.valueLock = !this.valueLock;
+  //   this.isDisable = !this.isDisable;
+  // }
+  changeValue(event) {
+    this.value =  event.value;
+    // console.log(this.myRadioButton)
   }
+
 
 
 
