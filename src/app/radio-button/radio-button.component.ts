@@ -19,17 +19,28 @@ import { MAT_RADIO_DEFAULT_OPTIONS } from '@angular/material/radio';
   }
   ]
 })
-export class RadioButtonComponent implements OnInit , ControlValueAccessor{
+export class RadioButtonComponent implements OnInit, ControlValueAccessor{
   yesNoForm:FormGroup;
   valueLock = true;
   isDisable = false;
+  val = true;
+  onChange: any = () => {}
+  onTouch: any = () => {}
   constructor(private fb:FormBuilder) { }
 
   ngOnInit(): void {
     this.yesNoForm = this.fb.group({
-      value: ""
+      value: this.val
     });
 
+  }
+  set value(value) {
+
+    if(!!value){
+      this.val = value;
+      this.onChange(value);
+      this.onTouch();
+    }
   }
   writeValue(value:any) {
     if(value) {
@@ -47,5 +58,7 @@ export class RadioButtonComponent implements OnInit , ControlValueAccessor{
     this.isDisable = !this.isDisable;
     isDisable ? this.yesNoForm.enable():this.yesNoForm.disable()
   }
+
+
 
 }

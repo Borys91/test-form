@@ -1,10 +1,14 @@
-<form [formGroup]="mainForm" class="form"   (ngSubmit)="next(mainForm)">
+<form [formGroup]="mainForm" class="form" (ngSubmit)="onSubmit(mainForm)">
   <div class="wrapper">
     <h1>{{title}}</h1>
     <div class="top-block">
       <div class="top-block__left">
         <div>
-          <app-input formControlName="firstInput"></app-input>
+          <app-custom-input [required]=true formControlName="firstInput" [disabled]="false">
+          </app-custom-input>
+          <mat-error *ngIf="mainForm.get('firstInput').hasError('required') && mainForm.get('firstInput').touched">
+            Error message!
+          </mat-error>
         </div>
         <div>
           <p class="subtitle">Experience with Angular 10-11</p>
@@ -13,7 +17,9 @@
       </div>
       <div class="top-block__right">
         <div>
-          <app-input formControlName="secondInput"></app-input>
+          <app-custom-input [required]=true formControlName="secondInput" [disabled]="false"></app-custom-input>
+          <mat-error *ngIf="mainForm.get('secondInput').hasError('required') && mainForm.get('secondInput').touched">
+            Error message!</mat-error>
         </div>
         <div>
           <p class="subtitle">Estimate for the task - 4h</p>
@@ -23,18 +29,23 @@
     </div>
     <div class="main-block">
       <div>
-        <app-input formControlName="thirdInput"></app-input>
+        <app-custom-input [required]=true formControlName="thirdInput" [disabled]="false"></app-custom-input>
+        <mat-error *ngIf="mainForm.get('thirdInput').hasError('required') && mainForm.get('thirdInput').touched">Error
+          message!</mat-error>
       </div>
       <div>
-        <app-input formControlName="fourthInput"></app-input>
+        <app-custom-input [required]=true formControlName="fourthInput" [disabled]="false"></app-custom-input>
+        <mat-error *ngIf="mainForm.get('fourthInput').hasError('required') && mainForm.get('fourthInput').touched">Error
+          message!</mat-error>
       </div>
       <div>
-        <app-input formControlName="fifthInput"></app-input>
+        <app-custom-input [required]=true formControlName="fifthInput" [disabled]="false"></app-custom-input>
+        <mat-error *ngIf="mainForm.get('fifthInput').hasError('required') && mainForm.get('fifthInput').touched">Error
+          message!</mat-error>
       </div>
     </div>
     <div class="footer-block">
-      <button type="submit" mat-flat-button color="primary" class="btn" ><span class="btn__text">Next</span></button>
+      <button type="submit" mat-flat-button color="primary" class="btn"><span class="btn__text">Next</span></button>
     </div>
   </div>
 </form>
-

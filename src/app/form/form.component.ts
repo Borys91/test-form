@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators , NgForm} from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators, NgForm, FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-form',
@@ -7,22 +7,31 @@ import { FormBuilder, FormControl, FormGroup, Validators , NgForm} from '@angula
   styleUrls: ['./form.component.scss']
 })
 export class FormComponent implements OnInit {
-  mainForm:FormGroup;
+  // valueLock = true;
+  // isDisable = false;
+  mainForm: FormGroup;
   title = 'Form title';
   constructor(private fb: FormBuilder) { }
-  isDisable = true;
   ngOnInit(): void {
     this.mainForm = this.fb.group({
-      firstRadioButton: [{value:true}],
-      secondRadioButton: [{value:true}],
-      firstInput: ["",Validators.required],
-      secondInput:["",Validators.required],
-      thirdInput:["",Validators.required],
-      fourthInput:["",Validators.required],
-      fifthInput:["",Validators.required],
+      firstInput : new FormControl("",Validators.required),
+      secondInput : new FormControl("",Validators.required),
+      thirdInput : new FormControl("",Validators.required),
+      fourthInput : new FormControl("",Validators.required),
+      fifthInput : new FormControl("",Validators.required),
+      firstRadioButton: new FormControl({value:true}),
+      secondRadioButton: new FormControl({value:true}),
     })
   }
-  next(form) {
+  onSubmit(form) {
     console.log(form)
+    form.markAllAsTouched();
+
   }
+
+  // setValue(isDisable,FormControl) {
+  //   this.valueLock = !this.valueLock;
+  //   this.isDisable = !this.isDisable;
+  //   isDisable ? FormControl.enable():FormControl.disable()
+  // }
 }
