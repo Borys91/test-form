@@ -7,26 +7,30 @@ import { FormBuilder, FormControl, FormGroup, Validators, NgForm, FormsModule } 
   styleUrls: ['./form.component.scss']
 })
 export class FormComponent implements OnInit {
-  // valueLock = true;
-  // isDisable = false;
+  firstRadioButton =  {
+    value:"Yes"
+  }
+  secondRadioButton =  {
+    value:"Yes"
+  }
   mainForm: FormGroup;
+  isDisable = true;
   title = 'Form title';
   constructor(private fb: FormBuilder) { }
   ngOnInit(): void {
     this.mainForm = this.fb.group({
-      firstInput : new FormControl("",Validators.required),
+      firstInput : new FormControl("",Validators.required ),
       secondInput : new FormControl("",Validators.required),
       thirdInput : new FormControl("",Validators.required),
       fourthInput : new FormControl("",Validators.required),
       fifthInput : new FormControl("",Validators.required),
-      firstRadioButton: new FormControl({value:"Yes"}),
-      secondRadioButton: new FormControl({value:"Yes"}),
+      firstRadioButton: new FormControl(),
+      secondRadioButton: new FormControl(),
     })
   }
   onSubmit(form) {
     console.log(form)
     form.markAllAsTouched();
-
   }
 
   // setValue(isDisable,FormControl) {

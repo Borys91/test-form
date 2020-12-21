@@ -1,18 +1,20 @@
 <form [formGroup]="mainForm" class="form" (ngSubmit)="onSubmit(mainForm)">
   <div class="wrapper">
     <h1>{{title}}</h1>
+    <button type="button" (click)= "isDisable = !isDisable">click</button>
     <div class="top-block">
       <div class="top-block__left">
         <div>
-          <app-custom-input [required]="true" formControlName="firstInput" [disabled]="false">
+          <app-custom-input [required]="true" formControlName="firstInput" [disabled]="isDisable">
           </app-custom-input>
-          <mat-error *ngIf="mainForm.get('firstInput').hasError('required') && mainForm.get('firstInput').touched">
+          <mat-error *ngIf="mainForm.get('firstInput').hasError('required')
+          && mainForm.get('firstInput').touched ">
             Error message!
           </mat-error>
         </div>
         <div>
           <p class="subtitle">Experience with Angular 10-11</p>
-          <app-radio-button formControlName="firstRadioButton"></app-radio-button>
+          <app-radio-button formControlName="firstRadioButton" [ngModel]="firstRadioButton"></app-radio-button>
         </div>
       </div>
       <div class="top-block__right">
@@ -23,7 +25,7 @@
         </div>
         <div>
           <p class="subtitle">Estimate for the task - 4h</p>
-          <app-radio-button formControlName="secondRadioButton"></app-radio-button>
+          <app-radio-button formControlName="secondRadioButton" [ngModel]="firstRadioButton"></app-radio-button>
         </div>
       </div>
     </div>

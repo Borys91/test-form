@@ -42,14 +42,12 @@ export class RadioButtonComponent implements  ControlValueAccessor{
     }
   }
   writeValue(value:any) {
-    console.log(value.value)
     if(value) {
       this.myRadioButton = value.value
     }
   }
   registerOnChange(fn: any) {
     this.onChange = fn;
-
   }
   registerOnTouched(fn: any) {
     this.onTouch = fn;
@@ -62,8 +60,4 @@ export class RadioButtonComponent implements  ControlValueAccessor{
     this.value =  event.value;
     // console.log(this.myRadioButton)
   }
-
-
-
-
 }

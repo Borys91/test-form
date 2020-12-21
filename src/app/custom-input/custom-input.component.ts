@@ -25,8 +25,8 @@ export class CustomInputComponent implements  ControlValueAccessor {
 
   set value(val){
     if( val !== undefined && this.val !== val){
-    this.val = val;
-    this.myInput = val;
+    this.val = val.value;
+    this.myInput = val.value;
     this.onChange(this.val)
     this.onTouch(this.val)
     }
@@ -55,6 +55,6 @@ export class CustomInputComponent implements  ControlValueAccessor {
     this.onTouch(this.val);
   }
   changeValue(event) {
-   this.value =  event.target.value;
+   this.value =  event.target;
   }
 }
